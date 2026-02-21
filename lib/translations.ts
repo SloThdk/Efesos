@@ -71,7 +71,15 @@ export const t = {
     contact:   { dk: "Kontakt",        de: "Kontakt" },
     hours:     { dk: "Åbningstider",   de: "Öffnungszeiten" },
     hoursText: { dk: "Se aktuelle åbningstider ved at ringe til os.", de: "Aktuelle Öffnungszeiten erfahren Sie telefonisch." },
+    smiley:    { dk: "Se kontrol rapport", de: "Kontrollbericht ansehen" },
     copy:      { dk: "Restaurant Efesos — Blåvand", de: "Restaurant Efesos — Blåvand" },
+    tagline2:  { dk: "Pizza • Steak • Kebab", de: "Pizza • Steak • Kebab" },
+  },
+  misc: {
+    callBtn:   { dk: "Ring: 75 27 57 22", de: "Anrufen: 75 27 57 22" },
+    callMobile:{ dk: "Ring til os", de: "Anrufen" },
+    smileyAlt: { dk: "Se kontrol rapport", de: "Kontrollbericht" },
+    takeaway:  { dk: "Tag-away tilgængeligt", de: "Zum Mitnehmen verfügbar" },
   },
   menu: {
     pageTitle:  { dk: "Menukort",       de: "Speisekarte" },

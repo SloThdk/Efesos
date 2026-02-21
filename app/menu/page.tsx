@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useLanguage } from "@/components/LanguageProvider";
 import { t, tx } from "@/lib/translations";
 import { menuCategories } from "@/lib/menu-data";
+import AnimateIn from "@/components/AnimateIn";
 import type { Lang } from "@/lib/translations";
 
 // Real food photos mapped to each category — one real photo per category
@@ -10,7 +11,7 @@ const categoryPhotos: Record<string, string> = {
   pizza:        "/images/photo13.jpg",   // pizza
   calzone:      "/images/photo15.jpg",   // calzone open
   mexicansk:    "/images/photo12.jpg",   // loaded spicy pizza
-  salatpizza:   "/images/photo8.jpg",    // salad plate
+  salatpizza:   "/images/photo14.jpg",   // pizza (not salad — it's a pizza variant!)
   specialpizza: "/images/photo14.jpg",   // pizza
   born:         "/images/photo5.jpg",    // fries — simple, kid-friendly
   durum:        "/images/photo3.jpg",    // dürum wrap
@@ -60,8 +61,9 @@ export default function MenuPage() {
 
       {/* MENU — no inline language toggle, it's global now */}
       <div style={{ maxWidth: 920, margin: "0 auto", padding: "40px 24px 80px" }}>
-        {menuCategories.map((cat) => (
-          <section key={cat.id} style={{ marginBottom: 56 }}>
+        {menuCategories.map((cat, catIdx) => (
+          <AnimateIn key={cat.id} delay={catIdx < 3 ? catIdx * 60 : 0}>
+          <section style={{ marginBottom: 56 }}>
 
             {/* Category header with REAL food photo */}
             <div style={{
@@ -151,6 +153,7 @@ export default function MenuPage() {
               ))}
             </div>
           </section>
+          </AnimateIn>
         ))}
 
         {/* Bottom call CTA */}

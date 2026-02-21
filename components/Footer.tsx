@@ -77,8 +77,9 @@ export default function Footer() {
               {tx(t.footer.hoursText, lang)}
             </p>
             <a href="http://www.findsmiley.dk/562043" target="_blank" rel="noopener noreferrer"
-              style={{ display: "inline-block", marginTop: 20 }}>
-              <Image src="/images/kontrol.png" alt="Se kontrol rapport" width={100} height={32}
+              style={{ display: "inline-block", marginTop: 20 }}
+              title={tx(t.footer.smiley, lang)}>
+              <Image src="/images/kontrol.png" alt={tx(t.misc.smileyAlt, lang)} width={100} height={32}
                 style={{ objectFit: "contain" }} />
             </a>
           </div>
@@ -92,7 +93,7 @@ export default function Footer() {
           fontSize: 12, color: "#6a5a48",
         }}>
           <span>© {new Date().getFullYear()} {tx(t.footer.copy, lang)}</span>
-          <span>Pizza • Steak • Kebab</span>
+          <span>{tx(t.footer.tagline2, lang)}</span>
         </div>
       </div>
     </footer>

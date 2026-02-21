@@ -15,9 +15,7 @@
 
 * { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   background-color: var(--ef-cream);
@@ -26,12 +24,22 @@ body {
   font-family: var(--font-body, 'DM Sans', sans-serif);
 }
 
-h1, h2, h3, h4 {
-  font-family: var(--font-heading, 'Cormorant Garamond', serif);
-}
+h1, h2, h3, h4 { font-family: var(--font-heading, 'Cormorant Garamond', serif); }
 
+/* === CURSOR === */
+/* Default everything to arrow */
 * { cursor: default; }
-a, button, [role="button"] { cursor: pointer !important; }
-input, textarea, select { cursor: text; }
-input[type="submit"], input[type="button"], input[type="reset"], input[type="checkbox"], input[type="radio"] { cursor: pointer !important; }
-label { cursor: pointer; }
+
+/* All interactive elements AND their children get pointer */
+a, a *,
+button, button *,
+[role="button"], [role="button"] * { cursor: pointer !important; }
+
+/* Text inputs get text cursor */
+input[type="text"], input[type="email"], input[type="tel"],
+input[type="search"], textarea { cursor: text; }
+
+/* Explicit submit/checkbox/radio stay pointer */
+input[type="submit"], input[type="button"],
+input[type="reset"], input[type="checkbox"],
+input[type="radio"], select, label { cursor: pointer; }
