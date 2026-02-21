@@ -32,20 +32,18 @@ export default function LanguageSwitcher() {
           title={l === "dk" ? "Dansk" : "Deutsch"}
           style={{
             background: "none",
-            border: "none",
-            padding: "3px 4px 5px",
-            borderBottom: lang === l
+            border: lang === l
               ? "2px solid var(--ef-orange)"
-              : "2px solid transparent",
-            opacity: lang === l ? 1 : 0.45,
+              : "2px solid rgba(255,255,255,0.2)",
+            borderRadius: 6,
+            padding: "3px 4px",
+            opacity: lang === l ? 1 : 0.5,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            transition: "opacity 0.2s, border-color 0.2s, transform 0.2s",
+            transition: "border-color 0.2s, opacity 0.2s, transform 0.2s",
             transform: lang === l ? "scale(1.1)" : "scale(1)",
-            transformOrigin: "bottom center",
             cursor: "pointer",
-            borderRadius: 3,
           }}
         >
           {l === "dk" ? <DanishFlag size="sm" /> : <GermanFlag size="sm" />}

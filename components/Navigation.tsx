@@ -90,18 +90,19 @@ export default function Navigation() {
             ))}
 
             {/* Language flags */}
-            <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+            <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
               {(["dk", "de"] as Lang[]).map((l) => (
                 <button key={l} onClick={() => setLang(l)} style={{
-                  background: "none", border: "none", padding: "2px 0 3px",
-                  borderBottom: lang === l
+                  background: "none",
+                  border: lang === l
                     ? "2px solid var(--ef-orange)"
-                    : "2px solid transparent",
-                  opacity: lang === l ? 1 : 0.5,
+                    : "2px solid rgba(160,130,90,0.35)",
+                  borderRadius: 6,
+                  padding: "3px 4px",
+                  opacity: lang === l ? 1 : 0.6,
                   display: "flex", alignItems: "center",
-                  transition: "opacity 0.2s, border-color 0.2s",
+                  transition: "border-color 0.2s, opacity 0.2s, transform 0.2s",
                   transform: lang === l ? "scale(1.08)" : "scale(1)",
-                  transformOrigin: "bottom center",
                   cursor: "pointer",
                 }}>
                   {l === "dk" ? <DanishFlag size="sm" /> : <GermanFlag size="sm" />}
@@ -170,16 +171,20 @@ export default function Navigation() {
           ))}
 
           {/* Language in mobile menu */}
-          <div style={{ display: "flex", gap: 20, marginTop: 4 }}>
+          <div style={{ display: "flex", gap: 14, marginTop: 4 }}>
             {(["dk", "de"] as Lang[]).map((l) => (
               <button key={l} onClick={() => setLang(l)} style={{
-                display: "flex", alignItems: "center", gap: 8,
-                background: "none", border: "none",
-                borderBottom: lang === l ? "2px solid var(--ef-orange)" : "2px solid transparent",
-                padding: "4px 0 6px",
-                color: "#fff", fontSize: 15, fontWeight: 500,
-                opacity: lang === l ? 1 : 0.5,
-                transition: "opacity 0.2s, border-color 0.2s",
+                display: "flex", alignItems: "center", gap: 10,
+                background: "none",
+                border: lang === l
+                  ? "2px solid var(--ef-orange)"
+                  : "2px solid rgba(255,255,255,0.25)",
+                borderRadius: 10,
+                padding: "10px 18px",
+                color: lang === l ? "#fff" : "rgba(255,255,255,0.55)",
+                fontSize: 15, fontWeight: 500,
+                transition: "border-color 0.2s, color 0.2s, transform 0.2s",
+                transform: lang === l ? "scale(1.04)" : "scale(1)",
                 cursor: "pointer",
               }}>
                 {l === "dk" ? <DanishFlag size="md" /> : <GermanFlag size="md" />}
