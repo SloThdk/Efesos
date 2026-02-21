@@ -134,6 +134,26 @@ export default function Navigation() {
             </a>
           </nav>
 
+          {/* ── MOBILE FLAGS (hidden on desktop, shown on mobile next to burger) ── */}
+          <div className="nav-mobile-flags" style={{ display: "none", gap: 6, alignItems: "center" }}>
+            {(["dk", "de"] as Lang[]).map((l) => (
+              <button key={l} onClick={() => setLang(l)} style={{
+                background: "none",
+                border: lang === l
+                  ? "2px solid var(--ef-orange)"
+                  : "2px solid rgba(160,130,90,0.35)",
+                borderRadius: 6, padding: "3px 4px",
+                opacity: lang === l ? 1 : 0.6,
+                display: "flex", alignItems: "center",
+                transition: "border-color 0.2s, opacity 0.2s, transform 0.2s",
+                transform: lang === l ? "scale(1.08)" : "scale(1)",
+                cursor: "pointer",
+              }}>
+                {l === "dk" ? <DanishFlag size="sm" /> : <GermanFlag size="sm" />}
+              </button>
+            ))}
+          </div>
+
           {/* ── BURGER ── */}
           <button onClick={() => setMobileOpen(v => !v)} aria-label="Menu"
             className="nav-burger"
@@ -211,8 +231,9 @@ export default function Navigation() {
 
       <style>{`
         @media (max-width: 820px) {
-          .nav-desktop { display: none !important; }
-          .nav-burger  { display: flex !important; }
+          .nav-desktop      { display: none !important; }
+          .nav-burger       { display: flex !important; }
+          .nav-mobile-flags { display: flex !important; }
         }
       `}</style>
     </>
