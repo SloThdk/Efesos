@@ -4,7 +4,6 @@ import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { LanguageProvider } from "@/components/LanguageProvider";
 
 const cormorant = Cormorant_Garamond({
@@ -42,7 +41,6 @@ export default function RootLayout({
           {children}
           <Footer />
           <ScrollToTop />
-          <LanguageSwitcher />
         </LanguageProvider>
       </body>
     </html>

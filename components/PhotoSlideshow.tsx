@@ -39,9 +39,9 @@ export default function PhotoSlideshow() {
     goTo((active - 1 + photos.length) % photos.length);
   }, [active, goTo]);
 
-  // Auto-advance every 4s
+  // Auto-advance every 3s
   useEffect(() => {
-    const id = setInterval(next, 4000);
+    const id = setInterval(next, 3000);
     return () => clearInterval(id);
   }, [next]);
 

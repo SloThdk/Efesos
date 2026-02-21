@@ -77,10 +77,16 @@ export default function Footer() {
               {tx(t.footer.hoursText, lang)}
             </p>
             <a href="http://www.findsmiley.dk/562043" target="_blank" rel="noopener noreferrer"
-              style={{ display: "inline-block", marginTop: 20 }}
-              title={tx(t.footer.smiley, lang)}>
+              title={tx(t.footer.smiley, lang)}
+              style={{
+                display: "inline-flex", alignItems: "center", marginTop: 20,
+                padding: "8px 12px", borderRadius: 8,
+                backgroundColor: "rgba(255,255,255,0.06)",
+                border: "1px solid rgba(255,255,255,0.1)",
+                transition: "background 0.2s",
+              }}>
               <Image src="/images/kontrol.png" alt={tx(t.misc.smileyAlt, lang)} width={100} height={32}
-                style={{ objectFit: "contain" }} />
+                style={{ objectFit: "contain", display: "block" }} />
             </a>
           </div>
         </div>

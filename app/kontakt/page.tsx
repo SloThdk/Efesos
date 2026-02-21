@@ -110,8 +110,16 @@ export default function KontaktPage() {
             </div>
           ))}
 
-          <a href="http://www.findsmiley.dk/562043" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", marginTop: 20 }}>
-            <Image src="/images/kontrol.png" alt="Se kontrol rapport" width={130} height={42} style={{ objectFit: "contain" }} />
+          <a href="http://www.findsmiley.dk/562043" target="_blank" rel="noopener noreferrer"
+            style={{
+              display: "inline-flex", alignItems: "center", marginTop: 20,
+              padding: "10px 14px", borderRadius: 10,
+              backgroundColor: "#f8f3eb",
+              border: "1px solid var(--ef-border)",
+              transition: "background 0.2s, border-color 0.2s",
+            }}>
+            <Image src="/images/kontrol.png" alt="Se kontrol rapport" width={120} height={38}
+              style={{ objectFit: "contain", display: "block" }} />
           </a>
         </div>
 
