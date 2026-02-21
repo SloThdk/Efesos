@@ -31,6 +31,8 @@ export default function Navigation() {
 
   useEffect(() => setMobileOpen(false), [pathname]);
 
+  const norm = (p: string) => p.replace(/\/$/, "") || "/";
+
   // On home page: dark transparent → solid white on scroll
   // On other pages: always solid white
   const solid = scrolled || !isHome;
@@ -76,7 +78,7 @@ export default function Navigation() {
             display: "flex", alignItems: "center", gap: 28, flex: 1, justifyContent: "flex-end",
           }}>
             {links.map((l) => {
-              const active = pathname === l.href;
+              const active = norm(pathname) === norm(l.href);
               return (
                 <Link key={l.href} href={l.href} prefetch={false} style={{
                   fontSize: 13, fontWeight: 500,
@@ -190,7 +192,7 @@ export default function Navigation() {
             <Link key={l.href} href={l.href} prefetch={false} onClick={() => setMobileOpen(false)}
               style={{
                 fontFamily: "var(--font-heading)", fontSize: 34, fontWeight: 600,
-                color: pathname === l.href ? "var(--ef-gold)" : "#fff",
+                color: norm(pathname) === norm(l.href) ? "var(--ef-gold)" : "#fff",
                 textDecoration: "none", letterSpacing: "0.04em",
               }}>
               {l.label}
