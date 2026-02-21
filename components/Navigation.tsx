@@ -57,9 +57,9 @@ export default function Navigation() {
             textDecoration: "none", padding: "6px 0",
             minWidth: 0, flexShrink: 0,
           }}>
-            <Image src="/images/logo.jpg" alt="Restaurant Efesos"
-              width={42} height={42}
-              style={{ objectFit: "cover", borderRadius: "50%", flexShrink: 0 }} />
+            <div style={{ width: 42, height: 42, borderRadius: "50%", overflow: "hidden", flexShrink: 0, position: "relative" }}>
+              <Image src="/images/logo.jpg" alt="Restaurant Efesos" fill style={{ objectFit: "cover" }} />
+            </div>
             <span style={{
               fontFamily: "var(--font-heading)", fontSize: 20,
               fontWeight: 600, letterSpacing: "0.04em",
@@ -75,19 +75,26 @@ export default function Navigation() {
           <nav className="nav-desktop" style={{
             display: "flex", alignItems: "center", gap: 28, flex: 1, justifyContent: "flex-end",
           }}>
-            {links.map((l) => (
-              <Link key={l.href} href={l.href} prefetch={false} style={{
-                fontSize: 13, fontWeight: 500,
-                letterSpacing: "0.07em", textTransform: "uppercase",
-                textDecoration: "none",
-                color: pathname === l.href
-                  ? "var(--ef-orange)"
-                  : solid ? "var(--ef-text)" : "rgba(255,255,255,0.9)",
-                transition: "color 0.2s",
-              }}>
-                {l.label}
-              </Link>
-            ))}
+            {links.map((l) => {
+              const active = pathname === l.href;
+              return (
+                <Link key={l.href} href={l.href} prefetch={false} style={{
+                  fontSize: 13, fontWeight: 500,
+                  letterSpacing: "0.07em", textTransform: "uppercase",
+                  textDecoration: "none",
+                  color: active
+                    ? "var(--ef-orange)"
+                    : solid ? "var(--ef-text)" : "rgba(255,255,255,0.9)",
+                  paddingBottom: 4,
+                  borderBottom: active
+                    ? "2px solid var(--ef-orange)"
+                    : "2px solid transparent",
+                  transition: "color 0.2s, border-color 0.2s",
+                }}>
+                  {l.label}
+                </Link>
+              );
+            })}
 
             {/* Language flags */}
             <div style={{ display: "flex", gap: 6, alignItems: "center" }}>

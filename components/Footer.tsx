@@ -25,8 +25,9 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
-              <Image src="/images/logo.jpg" alt="Restaurant Efesos" width={40} height={40}
-                style={{ borderRadius: "50%", objectFit: "cover" }} />
+              <div style={{ width: 40, height: 40, borderRadius: "50%", overflow: "hidden", flexShrink: 0, position: "relative" }}>
+                <Image src="/images/logo.jpg" alt="Restaurant Efesos" fill style={{ objectFit: "cover" }} />
+              </div>
               <span style={{ fontFamily: "var(--font-heading)", fontSize: 22, fontWeight: 600, color: "#fff" }}>
                 Restaurant Efesos
               </span>
