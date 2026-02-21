@@ -67,7 +67,7 @@ export const menuCategories: MenuCategory[] = [
   },
   {
     id: "born",
-    title: { dk: "Børnemenu / Kindermenu", de: "Kindermenu" },
+    title: { dk: "Børnemenu", de: "Kindermenu" },
     items: [
       { number: "B1", name: { dk: "Mini Skinke Pizza", de: "Mini Schinken Pizza" }, desc: { dk: "Pizzasauce, ost, skinke", de: "Pizzasauce, Käse, Schinken" }, price: 69 },
       { number: "B2", name: { dk: "Bambino Pizza", de: "Bambino Pizza" }, desc: { dk: "Pizzasauce, ost, spaghetti, kødsauce", de: "Pizzasauce, Käse, Spaghetti, Fleischsauce" }, price: 69 },
@@ -86,9 +86,9 @@ export const menuCategories: MenuCategory[] = [
   },
   {
     id: "brod",
-    title: { dk: "Brød / Brot", de: "Brot" },
+    title: { dk: "Brød", de: "Brot" },
     items: [
-      { number: "50", name: { dk: "Hvidløgsbrød / Garlic Bread", de: "Knoblauchbrot / Garlic Bread" }, desc: { dk: "Med ost og hvidløg", de: "Mit Käse und Knoblauch" }, price: 79 },
+      { number: "50", name: { dk: "Hvidløgsbrød", de: "Knoblauchbrot" }, desc: { dk: "Med ost og hvidløg", de: "Mit Käse und Knoblauch" }, price: 79 },
     ],
   },
   {

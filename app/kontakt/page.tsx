@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
 import { useLanguage } from "@/components/LanguageProvider";
 import { t, tx } from "@/lib/translations";
@@ -110,17 +109,22 @@ export default function KontaktPage() {
             </div>
           ))}
 
-          <a href="http://www.findsmiley.dk/562043" target="_blank" rel="noopener noreferrer"
-            style={{
-              display: "inline-flex", alignItems: "center", marginTop: 20,
-              padding: "10px 14px", borderRadius: 10,
-              backgroundColor: "#f8f3eb",
-              border: "1px solid var(--ef-border)",
-              transition: "background 0.2s, border-color 0.2s",
-            }}>
-            <Image src="/images/kontrol.png" alt="Se kontrol rapport" width={120} height={38}
-              style={{ objectFit: "contain", display: "block" }} />
-          </a>
+          {/* Map — small clean card */}
+          <div style={{
+            marginTop: 8, borderRadius: 14, overflow: "hidden",
+            border: "1px solid var(--ef-border)",
+            boxShadow: "0 2px 14px rgba(0,0,0,0.07)",
+            height: 190,
+          }}>
+            <iframe
+              src="https://maps.google.com/maps?q=Bl%C3%A5vandvej+31,+6857+Bl%C3%A5vand,+Denmark&z=15&output=embed"
+              width="100%" height="190"
+              style={{ border: 0, display: "block" }}
+              allowFullScreen loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Restaurant Efesos"
+            />
+          </div>
         </div>
 
         {/* Form side */}
@@ -132,17 +136,6 @@ export default function KontaktPage() {
         </div>
       </div>
 
-      {/* Map */}
-      <div style={{ height: 360, overflow: "hidden" }}>
-        <iframe
-          src="https://maps.google.com/maps?q=Bl%C3%A5vandvej+31,+6857+Bl%C3%A5vand,+Denmark&z=15&output=embed"
-          width="100%" height="360"
-          style={{ border: 0, display: "block" }}
-          allowFullScreen loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          title="Restaurant Efesos"
-        />
-      </div>
     </main>
   );
 }
