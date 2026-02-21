@@ -1,31 +1,26 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useLanguage } from "@/components/LanguageProvider";
+import { t, tx } from "@/lib/translations";
+import PizzaIcon from "@/components/icons/PizzaIcon";
+import SteakIcon from "@/components/icons/SteakIcon";
+import KebabIcon from "@/components/icons/KebabIcon";
+import TakeawayIcon from "@/components/icons/TakeawayIcon";
+import PhotoSlideshow from "@/components/PhotoSlideshow";
 
-const galleryPhotos = [
-  { src: "/images/photo12.jpg", alt: "Pizza" },
-  { src: "/images/photo13.jpg", alt: "Pizza med fyld" },
-  { src: "/images/photo7.jpg", alt: "Barbecue spareribs" },
-  { src: "/images/photo11.jpg", alt: "Burger menu" },
-  { src: "/images/photo3.jpg", alt: "Dürum kebab" },
-  { src: "/images/photo2.jpg", alt: "Stegt kylling" },
-  { src: "/images/photo10.jpg", alt: "Kebab over fries" },
-  { src: "/images/photo15.jpg", alt: "Calzone" },
-];
+const featureIcons = [PizzaIcon, SteakIcon, KebabIcon, TakeawayIcon];
 
-const features = [
-  { icon: "🍕", title: "Håndlavet pizza", desc: "Frisk dej og gode råvarer — hver gang" },
-  { icon: "🥩", title: "Saftige steaks", desc: "250 gr. oksefilet eller skinkesteak" },
-  { icon: "🌯", title: "Dürum & kebab", desc: "Autentisk smag, lavet med kærlighed" },
-  { icon: "🥡", title: "Tag-away", desc: "Bestil og afhent — hurtigt og nemt" },
-];
-
-const featured = [
-  { name: "Mixed Grill", desc: "Oksefilet + kyllingebrystfilet med salat og pommes frites", price: 245, img: "/images/photo2.jpg" },
-  { name: "Barbecue Spareribs", desc: "Slow-cooked ribben med cremefraiche dressing og pommes frites", price: 159, img: "/images/photo7.jpg" },
-  { name: "Lav Selv Pizza", desc: "Vælg 5 ingredienser til din perfekte pizza", price: 139, img: "/images/photo12.jpg" },
+const featuredImages = [
+  "/images/photo2.jpg",
+  "/images/photo7.jpg",
+  "/images/photo12.jpg",
 ];
 
 export default function HomePage() {
+  const { lang } = useLanguage();
+  const f = t.features;
+
   return (
     <main>
       {/* ═══════════════════════════════════════════════════════
@@ -42,245 +37,251 @@ export default function HomePage() {
           justifyContent: "center",
         }}
       >
-        {/* Background photo */}
         <Image
           src="/images/photo1.jpg"
-          alt="Blåvand strand"
+          alt="Blåvand"
           fill
           priority
           style={{ objectFit: "cover", objectPosition: "center 60%" }}
         />
-        {/* Dark overlay */}
         <div
           style={{
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(to bottom, rgba(15,11,6,0.55) 0%, rgba(15,11,6,0.70) 60%, rgba(15,11,6,0.85) 100%)",
+              "linear-gradient(160deg, rgba(15,11,6,0.5) 0%, rgba(15,11,6,0.72) 55%, rgba(15,11,6,0.88) 100%)",
           }}
         />
 
-        {/* Content */}
         <div
+          className="hero-content"
           style={{
             position: "relative",
             zIndex: 1,
             textAlign: "center",
             padding: "0 24px",
-            maxWidth: 760,
+            maxWidth: 780,
           }}
         >
           <div
+            className="fade-up delay-1"
             style={{
               display: "inline-flex",
               alignItems: "center",
               gap: 8,
               marginBottom: 24,
-              padding: "6px 16px",
+              padding: "6px 18px",
               border: "1px solid rgba(201,168,76,0.5)",
               borderRadius: 100,
               color: "var(--ef-gold)",
               fontSize: 12,
               letterSpacing: "0.14em",
               textTransform: "uppercase",
-              fontFamily: "var(--font-body)",
             }}
           >
-            Blåvandvej 31 · 6857 Blåvand
+            {tx(t.hero.badge, lang)}
           </div>
 
           <h1
+            className="fade-up delay-2"
             style={{
               fontFamily: "var(--font-heading)",
-              fontSize: "clamp(48px, 8vw, 88px)",
+              fontSize: "clamp(52px, 9vw, 96px)",
               fontWeight: 600,
               color: "#fff",
-              lineHeight: 1.05,
-              marginBottom: 20,
+              lineHeight: 1.0,
+              marginBottom: 22,
               letterSpacing: "-0.01em",
             }}
           >
-            Restaurant
+            {tx(t.hero.title, lang)}
             <br />
-            <em>Efesos</em>
+            <em style={{ color: "var(--ef-gold)" }}>{tx(t.hero.titleItalic, lang)}</em>
           </h1>
 
           <p
+            className="fade-up delay-3"
             style={{
               fontSize: "clamp(15px, 2vw, 18px)",
-              color: "rgba(255,255,255,0.82)",
-              marginBottom: 36,
-              lineHeight: 1.6,
-              fontFamily: "var(--font-body)",
+              color: "rgba(255,255,255,0.80)",
+              marginBottom: 38,
+              lineHeight: 1.65,
+              whiteSpace: "pre-line",
             }}
           >
-            Pizza • Steak • Kebab — friske råvarer, god service,
-            <br />
-            midt i hjertet af Blåvand
+            {tx(t.hero.tagline, lang)}
           </p>
 
-          <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
+          <div
+            className="fade-up delay-4"
+            style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}
+          >
             <Link
               href="/menu"
               prefetch={false}
               style={{
-                padding: "14px 32px",
+                padding: "15px 36px",
                 backgroundColor: "var(--ef-orange)",
                 color: "#fff",
                 borderRadius: 8,
                 fontWeight: 600,
                 fontSize: 15,
                 textDecoration: "none",
-                letterSpacing: "0.03em",
+                letterSpacing: "0.04em",
+                boxShadow: "0 4px 20px rgba(200,89,30,0.4)",
+                transition: "transform 0.2s, box-shadow 0.2s",
               }}
+              className="btn-hover"
             >
-              Se menukort
+              {tx(t.hero.cta1, lang)}
             </Link>
             <a
               href="tel:+4575275722"
               style={{
-                padding: "14px 32px",
+                padding: "15px 36px",
                 backgroundColor: "transparent",
                 color: "#fff",
-                border: "1.5px solid rgba(255,255,255,0.55)",
+                border: "1.5px solid rgba(255,255,255,0.45)",
                 borderRadius: 8,
                 fontWeight: 500,
                 fontSize: 15,
                 textDecoration: "none",
-                letterSpacing: "0.03em",
+                letterSpacing: "0.04em",
+                transition: "background 0.2s, border-color 0.2s",
               }}
+              className="btn-ghost-hover"
             >
-              Ring: 75 27 57 22
+              {tx(t.hero.cta2, lang)}
             </a>
           </div>
         </div>
 
-        {/* Scroll hint */}
+        {/* Scroll indicator */}
         <div
           style={{
             position: "absolute",
             bottom: 32,
             left: "50%",
             transform: "translateX(-50%)",
-            color: "rgba(255,255,255,0.45)",
-            fontSize: 22,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 6,
             animation: "bounce 2s ease-in-out infinite",
           }}
         >
-          ↓
+          <div style={{
+            width: 1,
+            height: 40,
+            background: "linear-gradient(to bottom, transparent, rgba(255,255,255,0.5))",
+          }} />
+          <div style={{
+            width: 6,
+            height: 6,
+            borderRadius: "50%",
+            backgroundColor: "rgba(255,255,255,0.5)",
+          }} />
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════
           FEATURES STRIP
       ═══════════════════════════════════════════════════════ */}
-      <section style={{ backgroundColor: "var(--ef-dark2)", padding: "52px 24px" }}>
+      <section style={{ backgroundColor: "var(--ef-dark2)", padding: "64px 24px" }}>
         <div
           style={{
             maxWidth: 1200,
             margin: "0 auto",
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-            gap: 32,
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            gap: 24,
           }}
         >
-          {features.map((f) => (
-            <div
-              key={f.title}
-              style={{
-                textAlign: "center",
-                padding: "28px 16px",
-                borderRadius: 12,
-                border: "1px solid rgba(255,255,255,0.06)",
-              }}
-            >
-              <div style={{ fontSize: 36, marginBottom: 12 }}>{f.icon}</div>
-              <h3
+          {f.items.map((item, i) => {
+            const Icon = featureIcons[i];
+            return (
+              <div
+                key={i}
+                className="feature-card"
                 style={{
-                  fontFamily: "var(--font-heading)",
-                  fontSize: 22,
-                  fontWeight: 600,
-                  color: "#fff",
-                  marginBottom: 8,
+                  textAlign: "center",
+                  padding: "32px 20px",
+                  borderRadius: 16,
+                  border: "1px solid rgba(255,255,255,0.06)",
+                  transition: "border-color 0.3s, transform 0.3s",
+                  background: "rgba(255,255,255,0.02)",
                 }}
               >
-                {f.title}
-              </h3>
-              <p style={{ fontSize: 14, color: "#8a7a6a", lineHeight: 1.6 }}>{f.desc}</p>
-            </div>
-          ))}
+                <div style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: 64,
+                  height: 64,
+                  borderRadius: "50%",
+                  backgroundColor: "rgba(200,89,30,0.12)",
+                  marginBottom: 18,
+                }}>
+                  <Icon size={34} color="var(--ef-orange)" />
+                </div>
+                <h3
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontSize: 22,
+                    fontWeight: 600,
+                    color: "#fff",
+                    marginBottom: 8,
+                    lineHeight: 1.2,
+                  }}
+                >
+                  {tx(item.title, lang)}
+                </h3>
+                <p style={{ fontSize: 14, color: "#8a7a6a", lineHeight: 1.6 }}>
+                  {tx(item.desc, lang)}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════
-          PHOTO GALLERY — horizontal scroll
+          PHOTO SLIDESHOW
       ═══════════════════════════════════════════════════════ */}
-      <section style={{ backgroundColor: "var(--ef-stone)", padding: "72px 0" }}>
-        <div style={{ textAlign: "center", padding: "0 24px", marginBottom: 40 }}>
-          <p
-            style={{
-              fontSize: 12,
-              letterSpacing: "0.14em",
-              textTransform: "uppercase",
-              color: "var(--ef-orange)",
-              marginBottom: 12,
-              fontFamily: "var(--font-body)",
-            }}
-          >
-            Vores mad
-          </p>
-          <h2
-            style={{
-              fontFamily: "var(--font-heading)",
-              fontSize: "clamp(32px, 5vw, 52px)",
-              fontWeight: 600,
-              color: "var(--ef-text)",
-              lineHeight: 1.1,
-            }}
-          >
-            Fra vores køkken til dit bord
-          </h2>
-        </div>
-
-        <div
-          style={{
-            overflowX: "auto",
-            display: "flex",
-            gap: 16,
-            padding: "0 32px 8px",
-            scrollSnapType: "x mandatory",
-            scrollbarWidth: "none",
-          }}
-        >
-          {galleryPhotos.map((p, i) => (
-            <div
-              key={i}
+      <section className="scroll-fade" style={{ backgroundColor: "var(--ef-stone)", padding: "80px 24px" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 44 }}>
+            <p
               style={{
-                flexShrink: 0,
-                width: 280,
-                height: 210,
-                borderRadius: 14,
-                overflow: "hidden",
-                position: "relative",
-                scrollSnapAlign: "start",
-                boxShadow: "0 6px 24px rgba(0,0,0,0.12)",
+                fontSize: 12,
+                letterSpacing: "0.16em",
+                textTransform: "uppercase",
+                color: "var(--ef-orange)",
+                marginBottom: 12,
               }}
             >
-              <Image
-                src={p.src}
-                alt={p.alt}
-                fill
-                style={{ objectFit: "cover" }}
-              />
-            </div>
-          ))}
+              {tx(t.gallery.eyebrow, lang)}
+            </p>
+            <h2
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontSize: "clamp(30px, 5vw, 52px)",
+                fontWeight: 600,
+                color: "var(--ef-text)",
+                lineHeight: 1.1,
+              }}
+            >
+              {tx(t.gallery.title, lang)}
+            </h2>
+          </div>
+          <PhotoSlideshow />
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════
           FEATURED DISHES
       ═══════════════════════════════════════════════════════ */}
-      <section style={{ backgroundColor: "var(--ef-cream)", padding: "80px 24px" }}>
+      <section className="scroll-fade" style={{ backgroundColor: "var(--ef-cream)", padding: "80px 24px" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 52 }}>
             <p
@@ -290,10 +291,9 @@ export default function HomePage() {
                 textTransform: "uppercase",
                 color: "var(--ef-orange)",
                 marginBottom: 12,
-                fontFamily: "var(--font-body)",
               }}
             >
-              Udvalgte retter
+              {tx(t.featured.eyebrow, lang)}
             </p>
             <h2
               style={{
@@ -303,7 +303,7 @@ export default function HomePage() {
                 color: "var(--ef-text)",
               }}
             >
-              Populære valg
+              {tx(t.featured.title, lang)}
             </h2>
           </div>
 
@@ -314,18 +314,26 @@ export default function HomePage() {
               gap: 28,
             }}
           >
-            {featured.map((item) => (
+            {t.featured.items.map((item, i) => (
               <div
-                key={item.name}
+                key={i}
+                className="card-hover"
                 style={{
                   borderRadius: 16,
                   overflow: "hidden",
                   backgroundColor: "#fff",
                   boxShadow: "0 2px 20px rgba(0,0,0,0.07)",
+                  transition: "transform 0.3s, box-shadow 0.3s",
                 }}
               >
-                <div style={{ position: "relative", height: 200 }}>
-                  <Image src={item.img} alt={item.name} fill style={{ objectFit: "cover" }} />
+                <div style={{ position: "relative", height: 200, overflow: "hidden" }}>
+                  <Image
+                    src={featuredImages[i]}
+                    alt={tx(item.name, lang)}
+                    fill
+                    style={{ objectFit: "cover", transition: "transform 0.5s ease" }}
+                    className="card-img"
+                  />
                 </div>
                 <div style={{ padding: "20px 22px 24px" }}>
                   <div
@@ -344,23 +352,24 @@ export default function HomePage() {
                         color: "var(--ef-text)",
                       }}
                     >
-                      {item.name}
+                      {tx(item.name, lang)}
                     </h3>
                     <span
                       style={{
                         fontSize: 17,
                         fontWeight: 700,
                         color: "var(--ef-orange)",
-                        fontFamily: "var(--font-body)",
-                        fontVariantNumeric: "tabular-nums",
                         flexShrink: 0,
                         marginLeft: 8,
+                        fontVariantNumeric: "tabular-nums",
                       }}
                     >
-                      {item.price},-
+                      {i === 0 ? "245,-" : i === 1 ? "159,-" : "139,-"}
                     </span>
                   </div>
-                  <p style={{ fontSize: 14, color: "var(--ef-muted)", lineHeight: 1.6 }}>{item.desc}</p>
+                  <p style={{ fontSize: 14, color: "var(--ef-muted)", lineHeight: 1.6 }}>
+                    {tx(item.desc, lang)}
+                  </p>
                 </div>
               </div>
             ))}
@@ -370,6 +379,7 @@ export default function HomePage() {
             <Link
               href="/menu"
               prefetch={false}
+              className="btn-hover"
               style={{
                 display: "inline-block",
                 padding: "14px 38px",
@@ -380,9 +390,11 @@ export default function HomePage() {
                 fontSize: 15,
                 textDecoration: "none",
                 letterSpacing: "0.04em",
+                boxShadow: "0 4px 20px rgba(200,89,30,0.3)",
+                transition: "transform 0.2s, box-shadow 0.2s",
               }}
             >
-              Hele menukortet →
+              {tx(t.featured.cta, lang)}
             </Link>
           </div>
         </div>
@@ -392,11 +404,12 @@ export default function HomePage() {
           CTA BANNER
       ═══════════════════════════════════════════════════════ */}
       <section
+        className="scroll-fade"
         style={{
           position: "relative",
           overflow: "hidden",
           backgroundColor: "var(--ef-dark2)",
-          padding: "80px 24px",
+          padding: "96px 24px",
           textAlign: "center",
         }}
       >
@@ -407,64 +420,69 @@ export default function HomePage() {
             backgroundImage: "url('/images/photo6.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
-            opacity: 0.18,
+            opacity: 0.14,
           }}
         />
         <div style={{ position: "relative", zIndex: 1 }}>
           <h2
             style={{
               fontFamily: "var(--font-heading)",
-              fontSize: "clamp(32px, 5vw, 56px)",
+              fontSize: "clamp(34px, 5vw, 60px)",
               fontWeight: 600,
               color: "#fff",
-              marginBottom: 16,
+              marginBottom: 18,
               lineHeight: 1.1,
             }}
           >
-            Vi glæder os til at se dig
+            {tx(t.cta.title, lang)}
           </h2>
           <p
             style={{
               fontSize: 16,
-              color: "rgba(255,255,255,0.7)",
-              marginBottom: 36,
-              maxWidth: 500,
-              margin: "0 auto 36px",
-              lineHeight: 1.7,
+              color: "rgba(255,255,255,0.68)",
+              marginBottom: 40,
+              maxWidth: 520,
+              margin: "0 auto 40px",
+              lineHeight: 1.75,
+              whiteSpace: "pre-line",
             }}
           >
-            Ring til os for at bestille bord eller tag-away.
-            Vi er klar til at servicere dig.
+            {tx(t.cta.desc, lang)}
           </p>
           <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
             <a
               href="tel:+4575275722"
+              className="btn-hover"
               style={{
-                padding: "14px 36px",
+                padding: "14px 38px",
                 backgroundColor: "var(--ef-orange)",
                 color: "#fff",
                 borderRadius: 8,
                 fontWeight: 600,
                 fontSize: 16,
                 textDecoration: "none",
+                boxShadow: "0 4px 20px rgba(200,89,30,0.4)",
+                transition: "transform 0.2s, box-shadow 0.2s",
               }}
             >
-              Ring: 75 27 57 22
+              {tx(t.cta.call, lang)}
             </a>
             <Link
               href="/kontakt"
               prefetch={false}
               style={{
-                padding: "14px 36px",
-                border: "1.5px solid rgba(255,255,255,0.4)",
+                padding: "14px 38px",
+                border: "1.5px solid rgba(255,255,255,0.35)",
                 color: "#fff",
                 borderRadius: 8,
                 fontWeight: 500,
                 fontSize: 16,
                 textDecoration: "none",
+                transition: "border-color 0.2s, background 0.2s",
               }}
+              className="btn-ghost-hover"
             >
-              Find os
+              {tx(t.cta.find, lang)}
             </Link>
           </div>
         </div>
@@ -473,8 +491,23 @@ export default function HomePage() {
       <style>{`
         @keyframes bounce {
           0%, 100% { transform: translateX(-50%) translateY(0); }
-          50%       { transform: translateX(-50%) translateY(8px); }
+          50% { transform: translateX(-50%) translateY(10px); }
         }
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(28px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .fade-up { animation: fadeUp 0.7s ease forwards; opacity: 0; }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.25s; }
+        .delay-3 { animation-delay: 0.4s; }
+        .delay-4 { animation-delay: 0.55s; }
+
+        .feature-card:hover { border-color: rgba(200,89,30,0.3) !important; transform: translateY(-4px); }
+        .card-hover:hover   { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.14) !important; }
+        .card-hover:hover .card-img { transform: scale(1.06); }
+        .btn-hover:hover    { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(200,89,30,0.45) !important; }
+        .btn-ghost-hover:hover { background: rgba(255,255,255,0.1) !important; border-color: rgba(255,255,255,0.6) !important; }
       `}</style>
     </main>
   );
