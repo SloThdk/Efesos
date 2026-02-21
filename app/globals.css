@@ -31,4 +31,7 @@ h1, h2, h3, h4 {
 }
 
 * { cursor: default; }
-a, button, [role="button"], input, textarea, select, label { cursor: pointer; }
+a, button, [role="button"] { cursor: pointer !important; }
+input, textarea, select { cursor: text; }
+input[type="submit"], input[type="button"], input[type="reset"], input[type="checkbox"], input[type="radio"] { cursor: pointer !important; }
+label { cursor: pointer; }
