@@ -1,26 +1,34 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ef-dark:    #0f0b06;
+  --ef-dark2:   #1c1508;
+  --ef-orange:  #c8591e;
+  --ef-orange2: #e06830;
+  --ef-gold:    #c9a84c;
+  --ef-cream:   #faf3e8;
+  --ef-stone:   #f0e6d3;
+  --ef-text:    #1a1208;
+  --ef-muted:   #7a6a55;
+  --ef-border:  #e0d0b8;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+* { box-sizing: border-box; }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--ef-cream);
+  color: var(--ef-text);
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
 }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading, 'Cormorant Garamond', serif);
+}
+
+* { cursor: default; }
+a, button, [role="button"], input, textarea, select, label { cursor: pointer; }
