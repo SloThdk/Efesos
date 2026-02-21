@@ -11,4 +11,4 @@ if exist .next\dev (
 
 echo Starting Restaurant Efesos dev server on port 3004...
 start "" http://localhost:3004
-call npm run dev -- --port 3004
+call npx next dev -p 3004
