@@ -57,13 +57,9 @@ export default function Navigation() {
             textDecoration: "none", padding: "6px 0",
             minWidth: 0, flexShrink: 0,
           }}>
-            <div style={{
-              width: 42, height: 42, borderRadius: "50%",
-              overflow: "hidden", flexShrink: 0, position: "relative",
-            }}>
-              <Image src="/images/logo.jpg" alt="Restaurant Efesos" fill
-                style={{ objectFit: "cover" }} />
-            </div>
+            <Image src="/images/logo.jpg" alt="Restaurant Efesos"
+              width={42} height={42}
+              style={{ objectFit: "cover", borderRadius: "50%", flexShrink: 0 }} />
             <span style={{
               fontFamily: "var(--font-heading)", fontSize: 20,
               fontWeight: 600, letterSpacing: "0.04em",
